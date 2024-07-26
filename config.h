@@ -66,15 +66,17 @@ static const char *brupcmd[] = { "brightnessctl", "s", "10%+", NULL };
 static const char *brdowncmd[] = { "brightnessctl", "s", "10%-", NULL };
 static const char *volupcmd[] = { "pactl", "--", "set-sink-volume", "0", "+5%", NULL };
 static const char *voldowncmd[] = { "pactl", "--", "set-sink-volume", "0", "-5%", NULL };
+static const char *scrshotcmd[] = { "gnome-screenshot", NULL };
 
 static const Key keys[] = {
 	/* brightness and volume keybinds */
-	{ 0,          XF86XK_MonBrightnessUp,      spawn,          {.v = brupcmd } },
+  { 0,          XF86XK_MonBrightnessUp,      spawn,          {.v = brupcmd } },
 	{ 0,          XF86XK_MonBrightnessDown,    spawn,          {.v = brdowncmd } },
 	{ 0,          XF86XK_AudioRaiseVolume,     spawn,          {.v = volupcmd } },
 	{ 0,          XF86XK_AudioLowerVolume,     spawn,          {.v = voldowncmd } },
 	
 	/* modifier                     key        function        argument */
+  { MODKEY,                       XK_Print,  spawn,          {.v = scrshotcmd }},
 	{ MODKEY,                       XK_s,      spawn,          {.v = browsecmd } },
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
